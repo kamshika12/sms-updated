@@ -43,7 +43,7 @@ try {
         // Write SQL queries to populate these stats:
         // ==========================================
         
-        /* Uncomment and implement:
+        /* Uncomment and implement:*/
         
         // 1. Get total students
         $stmt_total = $pdo->query("SELECT COUNT(*) FROM students");
@@ -57,7 +57,7 @@ try {
         $stmt_courses = $pdo->query("SELECT COUNT(DISTINCT course) FROM students");
         $active_courses = $stmt_courses->fetchColumn();
         
-        */
+        
 
         // ==========================================
         // TODO: Student Practice - Fetch Student Records
@@ -65,7 +65,7 @@ try {
         // Support search filtering if the user entered a keyword.
         // ==========================================
         
-        /* Uncomment and implement:
+        /* Uncomment and implement:*/
         
         if (!empty($search)) {
             // Search query filtering by student_id, first_name, last_name, email, or course
@@ -88,7 +88,7 @@ try {
         $students = $stmt->fetchAll();
         $is_database_connected = true;
         
-        */
+        
     }
 } catch (PDOException $e) {
     // If the table doesn't exist yet, we catch the exception and fall back to mock data
