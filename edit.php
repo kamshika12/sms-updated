@@ -23,12 +23,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     
     try {
         if ($pdo !== null) {
-            // ==========================================
-            // TODO: Student Practice - Fetch Single Student
-            // Write an SQL query to retrieve the student where id = :id.
-            // ==========================================
+             ==========================================
+             TODO: Student Practice - Fetch Single Student
+             Write an SQL query to retrieve the student where id = :id.
+             ==========================================
             
-            /* Uncomment and implement:
+            /* Uncomment and implement: */
             
             $stmt = $pdo->prepare("SELECT * FROM students WHERE id = :id");
             $stmt->execute(['id' => $id]);
@@ -40,7 +40,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 header("Location: index.php?status=error&msg=Student+record+not+found.");
                 exit();
             }
-            */
+    
         }
     } catch (PDOException $e) {
         $errors[] = "Database error: " . $e->getMessage();
@@ -117,11 +117,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 // 2. Process Student Record Update (POST Request)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
-    // ==========================================
+     ==========================================
      TODO: Student Practice - Update Form Processing
-    // ==========================================
+     ==========================================
     
-    /* Step-by-step implementation guide:
+    /* Step-by-step implementation guide:*/
     
     // 1. Sanitize incoming inputs
     $student_id = isset($_POST['student_id']) ? trim($_POST['student_id']) : '';
@@ -185,7 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors[] = $e->getMessage();
         }
     }
-    */
+    
     
     // For front-end preview demonstration (students will remove this mock block)
     if (empty($errors)) {
