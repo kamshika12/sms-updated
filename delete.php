@@ -20,7 +20,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     // TODO: Student Practice - Delete Record
     // ==========================================
     
-    /* Uncomment and implement:
+    /* Uncomment and implement:*/
     
     try {
         if ($pdo === null) {
@@ -40,7 +40,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         header("Location: index.php?status=error&msg=" . urlencode("Delete failed: " . $e->getMessage()));
         exit();
     }
-    */
+    
     
     // For front-end preview demonstration (students will remove this mock block)
     header("Location: index.php?status=success&msg=Student+record+deleted+successfully+(Mock+Preview)!");
