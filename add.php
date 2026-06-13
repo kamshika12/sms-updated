@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // TODO: Student Practice - Form Processing
     // ==========================================
     
-    /* Step-by-step implementation guide:
+    // Step-by-step implementation guide:
     
     // 1. Sanitize incoming inputs
     $student_id = isset($_POST['student_id']) ? trim($_POST['student_id']) : '';
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors[] = $e->getMessage();
         }
     }
-    */
+    
     
     // For front-end preview demonstration (students will remove this mock block)
     if (empty($errors)) {
