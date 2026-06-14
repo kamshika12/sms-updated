@@ -18,7 +18,7 @@ $errors = [];
 $student = null;
 $is_database_connected = false;
 
-// 1. Fetch Existing Student Details (GET Request)
+//1. Fetch Existing Student Details (GET Request)
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = (int)$_GET['id'];
     
@@ -31,7 +31,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
              ==========================================
              */
             
-            /* Uncomment and implement: */
+            // Uncomment and implement: 
             
             $stmt = $pdo->prepare("SELECT * FROM students WHERE id = :id");
             $stmt->execute(['id' => $id]);
@@ -49,7 +49,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         $errors[] = "Database error: " . $e->getMessage();
     }
 
-    // Fallback Mock Data for front-end editing preview
+     //Fallback Mock Data for front-end editing preview
     if (!$is_database_connected && $student === null) {
         // Mock databases of students matching index.php
         $mock_students = [
@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($course)) $errors[] = "Course selection is required.";
     if ($gpa !== '' && (!is_numeric($gpa) || $gpa < 0 || $gpa > 4.0)) $errors[] = "GPA must be a number between 0.00 and 4.00.";
 
-    // 3. Database operation (Only proceed if there are no validation errors)
+    //3. Database operation (Only proceed if there are no validation errors)
     if (empty($errors)) {
         try {
             if ($pdo === null) {
