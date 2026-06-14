@@ -11,7 +11,7 @@
  * 4. Redirect back to index.php with success or error notifications.
  */
 
-// Include database connection
+//Include database connection
 require_once 'db.php';
 
 $errors = [];
