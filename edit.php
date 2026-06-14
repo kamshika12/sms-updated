@@ -11,14 +11,14 @@
  * 4. Redirect back to index.php with success or error notifications.
  */
 
-// Include database connection
+ Include database connection
 require_once 'db.php';
 
 $errors = [];
 $student = null;
 $is_database_connected = false;
 
-// 1. Fetch Existing Student Details (GET Request)
+1. Fetch Existing Student Details (GET Request)
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = (int)$_GET['id'];
     
@@ -31,7 +31,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
              ==========================================
              */
             
-            /* Uncomment and implement: */
+             Uncomment and implement: 
             
             $stmt = $pdo->prepare("SELECT * FROM students WHERE id = :id");
             $stmt->execute(['id' => $id]);
@@ -39,7 +39,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $is_database_connected = true;
             
             if (!$student) {
-                // Redirect if student ID is not found in database
+                 Redirect if student ID is not found in database
                 header("Location: index.php?status=error&msg=Student+record+not+found.");
                 exit();
             }
@@ -49,7 +49,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         $errors[] = "Database error: " . $e->getMessage();
     }
 
-    // Fallback Mock Data for front-end editing preview
+     Fallback Mock Data for front-end editing preview
     if (!$is_database_connected && $student === null) {
         // Mock databases of students matching index.php
         $mock_students = [
@@ -98,7 +98,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         if (array_key_exists($id, $mock_students)) {
             $student = $mock_students[$id];
         } else {
-            // Fallback default mock
+             Fallback default mock
             $student = [
                 'id' => $id,
                 'student_id' => 'STD2026XX',
@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     */
     /* Step-by-step implementation guide:*/
     
-    // 1. Sanitize incoming inputs
+     1. Sanitize incoming inputs
     $student_id = isset($_POST['student_id']) ? trim($_POST['student_id']) : '';
     $first_name = isset($_POST['first_name']) ? trim($_POST['first_name']) : '';
     $last_name = isset($_POST['last_name']) ? trim($_POST['last_name']) : '';
@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($course)) $errors[] = "Course selection is required.";
     if ($gpa !== '' && (!is_numeric($gpa) || $gpa < 0 || $gpa > 4.0)) $errors[] = "GPA must be a number between 0.00 and 4.00.";
 
-    // 3. Database operation (Only proceed if there are no validation errors)
+    3. Database operation (Only proceed if there are no validation errors)
     if (empty($errors)) {
         try {
             if ($pdo === null) {
@@ -157,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 throw new Exception("Another student is already using the ID '$student_id'.");
             }
 
-            // Write UPDATE query
+             Write UPDATE query
             $sql = "UPDATE students SET 
                         student_id = :student_id,
                         first_name = :first_name, 
@@ -190,7 +190,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     
-    // For front-end preview demonstration (students will remove this mock block)
+     For front-end preview demonstration (students will remove this mock block)
     if (empty($errors)) {
         $mock_name = htmlspecialchars($_POST['first_name'] . ' ' . $_POST['last_name']);
         header("Location: index.php?status=success&msg=Student+(" . urlencode($mock_name) . ")+updated+successfully+(Mock+Preview)!");
