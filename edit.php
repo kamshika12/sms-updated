@@ -1,5 +1,6 @@
 <?php
-**
+
+/**
  * Student Management System - Edit Student
  * 
  * STUDENT PRACTICE TODO:
@@ -8,7 +9,7 @@
  * 2. Pre-populate the form inputs with the student's current information.
  * 3. Process the form submission (POST request), validate input, and execute an SQL UPDATE query.
  * 4. Redirect back to index.php with success or error notifications.
- *
+ */
 
 // Include database connection
 require_once 'db.php';
@@ -23,10 +24,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     
     try {
         if ($pdo !== null) {
+            /*
              ==========================================
              TODO: Student Practice - Fetch Single Student
              Write an SQL query to retrieve the student where id = :id.
              ==========================================
+             */
             
             /* Uncomment and implement: */
             
@@ -48,7 +51,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     // Fallback Mock Data for front-end editing preview
     if (!$is_database_connected && $student === null) {
-         Mock databases of students matching index.php
+        // Mock databases of students matching index.php
         $mock_students = [
             1 => [
                 'id' => 1,
@@ -109,18 +112,18 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         }
     }
 } else {
-     Redirect back if no valid ID provided
+    // Redirect back if no valid ID provided
     header("Location: index.php?status=error&msg=Invalid+student+ID.");
     exit();
 }
 
 // 2. Process Student Record Update (POST Request)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
+    /*
      ==========================================
      TODO: Student Practice - Update Form Processing
      ==========================================
-    
+    */
     /* Step-by-step implementation guide:*/
     
     // 1. Sanitize incoming inputs
